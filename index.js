@@ -7,22 +7,41 @@ const questions = [
     {
       type: 'input',
       name: 'text',
-      message: 'Enter characters for logo. (3 characters max)',
+      message: 'Enter characters for logo (3 characters max)',
     },
     {
       type: 'input',
-      message: 'What color would you like the text to be?',
+      message: 'Enter text color',
       name: 'textColor',
     },
     {
       type: 'checkbox',
-      message: 'What shape would you like?',
+      message: 'Select a shape',
       name: 'shape',
       choices: ['Circle', 'Triangle', 'Square'],
     },
     {
         type: 'input',
-        message: 'What color would you like the shape of logo to be?',
+        message: 'Enter shape color',
         name: 'shapeColor',
       },
   ];
+
+// // Function to write SVG file
+fs.writeFile(fileName, svgString, (err) => {
+    err ? console.error(err) : console.log('Generated logo.svg');
+});
+
+// Function to initialize app
+function init() {
+    inquirer.prompt(questions).then(
+        function (answers) {
+        let answers = generate(data);
+        writeToFile('./examples/logo.svg', answers);
+        console.log(answers);
+        }
+    )
+}
+
+//Function call to initialize app
+init()

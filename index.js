@@ -1,27 +1,12 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-// Import the Circle class from shapes.js
-const Circle = require('./lib/shapes');
-const Triangle = require('./lib/shapes');
-const Square = require('./lib/shapes');
+// // Import the Circle class from shapes.js
+// const Circle = require('./lib/shapes');
+// const Triangle = require('./lib/shapes');
+// const Square = require('./lib/shapes');
 
-// Function to generate SVG string based on user input
-function generateSVG(answers) {
-  // if user chooses circle for shape, svg will render circle logo
-  if (answers.shape == 'Circle') {
-    let newCircle = new Circle(answers.text, answers.textColor, answers.shapeColor)
-    return newCircle.render();
- // if user chooses triangle for shape, svg will render triangle logo
-  } else if (answers.triangle == 'Triangle') {
-    let newTriangle = new Triangle(answers.text, answers.textColor, answers.shapeColor)
-    return newTriangle.render();
- // if user chooses square for shape, svg will render square logo
-  } else if (answers.square == 'Square') {
-    let newSquare = new Square(answers.text, answers.textColor, answers.shapeColor)
-    return newSquare.render();
-  }
-}
+const { generateSVG } = require('./lib/shapes');
 
 // Function to write SVG file
 function writeToFile(fileName, svgString) {
